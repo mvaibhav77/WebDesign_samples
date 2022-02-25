@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* slideshow */
+        * {box-sizing:border-box}
+
+        /* Slideshow*/
+        .slideshow {
+        max-width: 1300px;
+        position: relative;
+        margin: auto;
+        }
+
+        /* Hide the images by default */
+        .slides {
+        display: none;
+        }
+        .slides img{
+            background-size: cover;
+            width: 100%;
+            height: 600px;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+        }
+
+        /* The dots/bullets/indicators */
+        .dots{
+            text-align: center;
+            position: relative;
+            bottom:40px;
+        }
+        .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #717171;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+        background-color: #333;
+        }
+
+        /* Fading animation */
+        .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+        }
+
+        @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+        }
+
+        .slideshow-container{
+            padding:15px 0; 
+        }
+        .slideshow{
+            padding-bottom:10px;
+        }
+        .caption{
+            width:100%;    
+            text-align: center;
+            top: 47.5%;
+            position: absolute;
+            font-size: 2em;
+            font-weight: 600;
+            color:#ffffff;
+        }
+
+
+        .courses{
+            display: flex;
+            padding-bottom:20px;
+        }
+        .course{
+            margin:0px 30px 0 0;
+            width:33.333333%;
+            height: 270px;
+            position: relative;
+            padding-left: 15px;
+            padding-right: 15px;
+            background-color: #f4f0edbe ;
+        }
+        .course a{
+            text-decoration: none;
+        }
+        .three{
+            margin-right:0;
+        }
+        .course img{
+            opacity: 0.9;
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            max-width: 100%;
+            vertical-align: middle;
+            border: 0;
+        }
+        .course .course-head{
+            margin:0 15%;
+            padding:5px 0;
+            position: relative;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            background-color: rgba(51, 51, 51, 0.465);
+            background-size:auto;
+            border-radius: 10px;
+            top:120px;
+            text-align: center;
+        }
+
+
+        .recent{
+            margin:0px 0 15px 0;
+            height: auto;
+            display: block;
+            overflow: none;
+            line-height: 1.2em;
+        }
+        .recent .more{
+            color:salmon;
+        }
+        .e-head{
+            z-index: 2;
+            font: 1.3em sans-serif;
+            line-height: 2em;
+        }
+
+        .e-head a{
+            font-size:0.7em;
+            text-decoration: none;
+            float:right;
+        }
+        .events{
+            z-index: 2;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+        .event{
+            width:33.333333%;
+            position: relative;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .event a{
+            text-decoration: none;
+            color:#333;
+        }
+        .e-img{
+            position: relative;
+            margin-bottom: 20px;
+            height: 200px;
+            background-color:#f4f0eb;
+        }
+        .e-img img{
+            max-height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            max-width: 100%;
+            vertical-align: middle;
+            border: 0;
+        }
+
+        /* media */
+        @media (max-width:800px){ 
+            .courses{
+                display:flex;
+                flex-direction: column;
+            }
+            .course{
+                margin: auto;
+                margin-bottom: 30px;
+                width:100%;
+            }
+            .course .course-head{
+                width:35%;
+                margin:auto;
+            }
+            .e-head{
+                padding-left:5%;
+                padding-right: 5%;
+            }
+            .events{
+                flex-direction: column;
+            }
+            .event{
+                width: 100%;
+                padding:0 0 30px 0;
+            }
+            .event h3{
+                padding-left:5%;
+                padding-right: 5%;
+            }
+            .event p{
+                padding-left:5%;
+                padding-right: 5%;
+                margin-top: -10px;
+            }
+        }
+        @media (max-width:800px){ 
+            .footer-nav{
+                flex-wrap: wrap;
+            }
+            .sections{
+                width: 50%;
+                padding-left: 15%;
+            }
+        }
+
+    </style>
+    <title>Lorem | Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="head">LOREM</span>
+            <nav>
+                <ul>
+                    <li><a href="#" id="current">HOME</a></li>
+                    <li><a href="aboutus.html">ABOUT US</a></li>
+                    <li><a href="academics.html">ACADEMICS</a></li>
+                    <li><a href="alumni.html">ALUMNI</a></li>
+                    <li><a href="faculty.html">FACULTY</a></li>
+                </ul>
+            </nav>
+            <div class="dropdown">
+                <button class="dropbtn"> &#9776; </button>
+                <div class="dropdown-content">
+                  <a href="aboutus.html">ABOUT US</a>
+                  <a href="academics.html">ACADEMICS</a>
+                  <a href="alumni.html">ALUMNI</a>
+                  <a href="admission.html">ADMISSION</a>
+                </div>
+            </div>
+        </div>
+        <div class="slideshow-container">
+            <div class="slideshow">
+                <div class="slides fade">
+                    <span class="caption">Catalyzing Careers</span>
+                    <img src="img/img1.jpg" alt="" srcset="">
+                </div>
+                <div class="slides fade">
+                    <span class="caption">Focused Growth</span>
+                    <img src="img/img2.jpg" alt="" srcset="">
+                </div>
+                <div class="slides fade">
+                    <span class="caption">Exploring Wonders</span>
+                    <img src="img/img3.jpg" alt="" srcset="">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+        <div class="courses">
+            <div class="course one">
+                <a href="#">
+                    <img src="img/course1.jpg" alt="">
+                    <div class="course-head">Undergraduate</div>
+                </a>
+            </div>
+            <div class="course two">
+                <a href="#">
+                    <img src="img/course2.jpg" alt="" srcset="">
+                    <div class="course-head">Postgraduate</div>
+                </a>
+            </div>
+            <div class="course three">
+                <a href="#">
+                    <img src="img/course3.jpg" alt="" srcset="">
+                    <div class="course-head">Research</div>
+                </a>
+            </div>
+        </div>
+        <div class="recent">
+            <div class="e-head">Recent Events<a href="#" class="more">MORE EVENTS &#8594; </a></div>
+            <div class="events">
+                <div class="event" style="padding-left:0;">
+                    <a href="#">
+                        <div class="e-img"><img src="img/event1.jpg" alt="EVENT 1" srcset=""></div>
+                        <div class="e-body">
+                            <h3>Sit amet consectetur adipisicing elit. Minima, reiciendis.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis praesentium neque quas repudiandae reiciendis consequuntur, dolor placeat deleniti ipsa inventore.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="event">
+                    <a href="#">
+                        <div class="e-img"><img src="img/event2.jpg" alt="EVENT 2" srcset=""></div>
+                        <div class="e-body">
+                            <h3>Sed enim exercitationem repellendus odit magnam animi.</h3>
+                            <p>Ipsam ratione, sint enim velit aliquid error tempore aliquam nostrum porro perferendis amet maiores s nisi veniam! Unde quos eum numquam rerum harum ab dolorum, nostrum molestiae!</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="event">
+                    <a href="#">
+                        <div class="e-img"><img src="img/event3.jpg" alt="EVENT 3" srcset=""></div>
+                        <div class="e-body">
+                            <h3>Quas sunt reiciendis. Aspernatur, accusamus tempore.</h3>
+                            <p>Tebitis facere unde quos laboriosam rerum est ratione adipisci ex animi delectus ipsum expedita optio modi eaque quod? Consequatur ipsam explicabo eos possimus repudiandae, voluptas officiis ullam id. Laudantium, dolore numquam!</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="recent">
+            <div class="e-head">Recent News<a href="#" class="more">MORE NEWS &#8594; </a></div>
+            <div class="events">
+                <div class="events">
+                    <div class="event" style="padding-left:0;">
+                        <a href="#">
+                            <div class="e-img"><img src="img/news1.jpg" alt="NEWS 1" srcset=""></div>
+                            <div class="e-body">
+                                <h3>Sit amet consectetur adipisicing elit. Minima, reiciendis.</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis praesentium neque quas repudiandae reiciendis consequuntur, dolor placeat deleniti ipsa inventore.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="event">
+                        <a href="#">
+                            <div class="e-img"><img src="img/news2.jpg" alt="NEWS 2" srcset=""></div>
+                            <div class="e-body">
+                                <h3>Sed enim exercitationem repellendus odit magnam animi.</h3>
+                                <p>Ipsam ratione, sint enim velit aliquid error tempore aliquam nostrum porro perferendis amet maiores s nisi veniam! Unde quos eum numquam rerum harum ab dolorum, nostrum molestiae!</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="event">
+                        <a href="#">
+                            <div class="e-img"><img src="img/news3.jpg" alt="NEWS 3" srcset=""></div>
+                            <div class="e-body">
+                                <h3>Quas sunt reiciendis. Aspernatur, accusamus tempore.</h3>
+                                <p>Tebitis facere unde quos laboriosam rerum est ratione adipisci ex animi delectus ipsum expedita optio modi eaque quod? Consequatur ipsam explicabo eos possimus repudiandae, voluptas officiis ullam id. Laudantium, dolore numquam!</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <hr>
+        <div class="footer-nav">
+            <div class="sections section1">
+                <span class="title">Academics</span>
+                <ul>
+                    <li><a href="#">Academic Programmes</a></li>
+                    <li><a href="#">Deparments</a></li>
+                    <li><a href="#">Faculty</a></li>
+                    <li><a href="#">Scholarship</a></li>
+                </ul>
+            </div>
+            <div class="sections section2">
+                <span class="title">Admission</span>
+                <ul>
+                    <li><a href="#">B.Tech/B.Arch</a></li>
+                    <li><a href="#">M.Tech/M.Arch</a></li>
+                    <li><a href="#">M.Sc</a></li>
+                    <li><a href="#">MS(By Research)</a></li>
+                    <li><a href="#">Ph.D.</a></li>
+                </ul>
+            </div>
+            <div class="sections section3">
+                <span class="title">Students Life</span>
+                <ul>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Clubs & Associations</a></li>
+                    <li><a href="#">Facilities & Service</a></li>
+                    <li><a href="#">Hostels</a></li>
+                </ul>
+            </div>
+            <div class="sections section4">
+                <span class="title">Contact Us</span>
+                <p>
+                    <a href="https://www.freelancer.com/hireme/SunnyLXXVII">Vaibhav Shukla</a><br>
+                    Freelancer<br>
+                    Mob.: +917987744456
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-lower">
+        Made By <a href="https://www.freelancer.com/hireme/SunnyLXXVII">Vaibhav Shukla</a> 
+    </div>
+    <script>
+        // Slideshow
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("slides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
