@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Grid</title>
+</head>
+<body>
+    <div class="wrapper">
+            <header>
+        <nav>
+            <ul>
+                <a href="#">              
+                    <li>
+                    HOME
+                    </li>
+                </a>
+                <a href="#">              
+                        <li>
+                        ABOUT
+                        </li>
+                    </a>
+                    <a href="#">              
+                        <li>
+                        SERVICES
+                        </li>
+                    </a>
+                <a href="#">              
+                        <li>
+                        CONTACT
+                        </li>
+                    </a>
+            </ul>
+        </nav>
+    </header>
+    <div class="main">
+    <div class="showcase">
+        <div class="film"></div>
+        <h1>Your Web Presence</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur ad
+            ipisicing elit. Nihil, ratione voluptatibus nemo 
+            amet deleniti saepe!
+
+        </p>
+        <a href="#" class="btn">Read More</a>
+        </div>
+                <div class="box-1 box-1-a">
+                 <h4>Membership</h4>
+                    <p>$199/Mo</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+                <div class="box-1 box-1-b">
+                    <h4>Pro Membership</h4>
+                    <p>$299/Mo</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>  
+    </div>
+    </div>
+    <div class="grid">
+            <div class="box-2" align="center">
+                <img src="img/img1.png" alt="">
+                <h4>Analytics</h4>
+                <p>Lorem ipsum dolor sit amet consectetur
+                     adipisicing elit. Adipisci numquam consequatur
+                     repudiandae aliquid non dolores?</p>
+            </div>
+            <div class="box-2" align="center">
+                 <img src="img/img2.png" alt="">
+                <h4>Marketing</h4>
+                <p>Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Adipisci numquam consequatur
+                        repudiandae aliquid non dolores?</p>
+            </div> 
+            <div class="box-2" align="center">
+                <img src="img/img3.png" alt="">
+                <h4>Developement</h4>
+                <p>Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Adipisci numquam consequatur
+                        repudiandae aliquid non dolores?</p>
+            </div> 
+            <div class="box-2" align="center">
+                <img src="img/img4.png" alt="">
+                <h4>Support</h4>
+                <p>Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Adipisci numquam consequatur
+                    repudiandae aliquid non dolores?</p>
+            </div> 
+    </div>
+</div>
+</body>
+<style>
+:root{
+    --light:#ccc;
+    --dark:#333;
+    --common:#000;
+    --shadow:0px 4px 3px grey;
+}
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:var(--dark);
+    padding: 0;
+    margin:1rem 1rem;
+    background: var(--common);
+}
+.btn{
+    text-decoration: none;
+    color:var(--light);
+    background:var(--dark);
+    padding: 0.6rem;
+}
+.btn:hover{
+    color:var(--dark);
+    background:var(--light);
+}
+nav ul{
+    list-style: none;
+    padding:0;
+    display: grid;
+    grid-gap:6px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+nav a{
+    text-decoration: none;
+    color:var(--dark);
+
+}
+nav li{
+    background-color: var(--light);
+    text-align:center; 
+    padding: 0.4rem;
+    box-shadow:var(--shadow);
+}
+nav li:hover{
+    background-color: var(--dark);
+    color: var(--light)
+}
+.main{
+    display:grid;
+    grid-gap:8px;
+    grid-template-areas:
+    'showcase showcase box-1-a'
+    'showcase showcase box-1-b';
+}
+.showcase{
+    /* z-index: 1; */
+    grid-area: showcase; 
+    background:url('./img/bimg.jpeg')no-repeat;
+    background-size:cover;
+    background-position: center;
+    min-height: 20rem;
+    color:var(--dark);
+}
+.showcase h1{
+    position: relative;
+    color:rgb(120, 34, 34);
+    padding: 1rem;
+}
+.showcase p{
+    padding: 0 1rem;
+}
+.showcase a{
+   margin-left:1rem;
+}
+.box-1{
+    /* padding: auto; */
+    background: var(--light);
+    text-align: center;
+    box-shadow: var(--shadow);
+    padding:0 2rem ;
+}
+.box-1-a{
+    grid-area: box-1-a;
+}
+.box-1-b{
+    grid-area: box-1-b;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap:8px;
+    overflow:hidden;
+    margin-top:1rem;
+}
+.box-2{
+    background-color:var(--light);
+    color:var(--dark);
+    box-shadow:var(--shadow);
+    padding:6px;
+}
+.box-2 h4,p{
+    text-align: left;
+}
+</style>
+</html>
