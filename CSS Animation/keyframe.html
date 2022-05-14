@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animation</title>
+</head>
+<body>
+    <div class="box1">
+       <p>Animation</p>
+    </div>
+</body>
+<style>
+body{
+background-color: #333;
+}
+.box1{
+    height: 200px;
+    width: 200px;
+    background: white;
+    animation-name: animation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+    animation-delay: 2s;
+    /*animation-fill-mode: forwards;*/
+}
+.box1 p{
+    color:#000;
+    font-family:'Courier New', Courier, monospace;
+    font-size:1rem;
+    text-align: center;
+    padding-top: 95px;
+}
+@keyframes animation{
+    0%{background-color: white; border-radius: 0%;}
+    25%{background-color:blue; border-radius:50% 0% 0% 0%;}
+    50%{background-color:chocolate; border-radius: 50% 50% 0 0;}
+    75%{background-color:red; border-radius: 50% 50% 50% 0;}
+    100%{background-color:white; border-radius: 50% 50% 50% 50%;}
+}
+</style>
+</html>
